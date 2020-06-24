@@ -171,4 +171,28 @@ public class CucumberStepDefinitions {
 
         $(By.xpath(itemsToCartButtonXpath)).click();
     }
+
+    @And("I hover over catalogue item with text \"([^\"]*)\"")
+    public void iHoverOverCatalogueWithText(String text) {
+        String menuItemXpath = "//section[contains(@class,'item content-block-ignore')]//span[contains(text(), '" + text + "')]";
+
+        //Dirty hack because of no visual ways to determine that menu is responsive
+        refresh();
+        sleep(1000);
+        $(By.xpath(menuItemXpath)).hover();
+    }
+
+    @And("I select \"([^\"]*)\" option from \"([^\"]*)\" drop-down filter")
+    public void iSelectOptionFromDropDownFilter(String option, String filter) {
+        String filterXpath = "//table[contains(@class, 'listing-filter')]//td[contains(., '" + filter + "')]/select";
+
+        $(By.xpath(filterXpath)).selectOption(option);
+    }
+
+    @And("I go to page number {string}")
+    public void iGoToPageNumber(String pageNumber) {
+        String pageXpath = "//div[contains(@class, 'paging')]//a[contains(., '" + pageNumber + "')]";
+
+        $(By.xpath(pageXpath)).click();
+    }
 }

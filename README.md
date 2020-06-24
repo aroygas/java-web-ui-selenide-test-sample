@@ -28,3 +28,28 @@ To run all the tests just call gradle at project's root with "clean test" comman
 ```
 gradle clean test
 ```
+
+## Tags ##
+
+Each scenario has some set of tags. <br>
+Test suites are managed by mentioning tags. <br>
+Tags follow the rules: <br>
+`@part1`                                 - run only tests tagged as @part1 <br>
+`not @part2`                     - exclude tests tagged as @part2 from run <br>
+`@part1 or @part2`    - run tests tagged as @part1 OR tagged as @part2 <br>
+`@part1 and @part2` - run tests tagged as @part1 AND tagged as @part2 <br>
+`@part1 and not @part2`  - run tests tagged as @part1 AND exclude tests tagged as @part2 from the run <br>
+
+So, to run only part 1 tests run:
+```
+gradle clean test -Dtags="@part1"
+```
+
+---
+
+# Generating html report #
+
+To generate a report using Allure at project's root run:
+```
+allure serve ./build/allure-results
+```
