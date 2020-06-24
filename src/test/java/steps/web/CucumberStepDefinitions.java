@@ -141,4 +141,34 @@ public class CucumberStepDefinitions {
 
         Assert.assertEquals($(By.xpath(phoneXpath)).getText(), phoneNumber);
     }
+
+    @And("I search for \"([^\"]*)\" on main page")
+    public void iSearchForOnMainPage(String searchRequest) {
+        String searchInputXpath = "//div[contains(@id, 'topSearch')]//input";
+        String searchButtonXpath = "//span[contains(@class, 'searchSubmit')]";
+
+        $(By.xpath(searchInputXpath)).setValue(searchRequest);
+        $(By.xpath(searchButtonXpath)).click();
+    }
+
+    @And("I choose \"([^\"]*)\" manufacturer")
+    public void iChooseManufacturer(String manufacturerName) {
+        String manufacturerXpath = "//ul[contains(@class, 'podborMakesList')]//li[contains(.,'" + manufacturerName + "')]/input";
+
+        $(By.xpath(manufacturerXpath)).click();
+    }
+
+    @And("I click on link with text \"([^\"]*)\"")
+    public void iClickOnLinkWithText(String linkText) {
+        String linkXpath = "//a[contains(text(), '" + linkText + "')]";
+
+        $(By.xpath(linkXpath)).click();
+    }
+
+    @And("I add first item to cart")
+    public void iAddFirstItemToCart() {
+        String itemsToCartButtonXpath = "//div[contains(@class, 'tile-box product')]//a[contains(., 'В корзину')]";
+
+        $(By.xpath(itemsToCartButtonXpath)).click();
+    }
 }

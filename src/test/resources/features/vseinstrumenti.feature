@@ -37,3 +37,13 @@ Feature: Web store functionality
   Scenario: 6) Contacts number check
     When I open "https://www.vseinstrumenti.ru/contacts/1.html" url
     Then I should see "+7 (495) 647-60-00" phone number for "Отдел подбора персонала" department
+
+  @smoke
+  Scenario: 7) Search for Makita drill and add it to shopping cart
+    When I open "http://www.vseinstrumenti.ru" url
+    And I search for "дрель" on main page
+    And I click on link with text "Все производители"
+    And I choose "Makita" manufacturer
+    And I click on link with text "Подобрать товар"
+    And I add first item to cart
+    Then I should see "Товар добавлен в корзину" text
