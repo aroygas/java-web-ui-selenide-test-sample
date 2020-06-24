@@ -10,7 +10,7 @@ Feature: Web store functionality
 
   @smoke
   Scenario: 2) City choice menu check
-    When I open "http://spb.vseinstrumenti.ru" url
+    When I open "http://www.vseinstrumenti.ru" url
     And I open city choice menu
     Then I should see "Выберите свой город" text
 
@@ -22,7 +22,7 @@ Feature: Web store functionality
 
   @smoke
   Scenario: 4) Random city with delivery choice
-    When I open "http://spb.vseinstrumenti.ru" url
+    When I open "http://www.vseinstrumenti.ru" url
     And I open city choice menu
     And I choose random city with delivery
     Then I should see random city chosen
